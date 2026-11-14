@@ -1,18 +1,29 @@
-#ifndef ENCOMENDA.H
-#define ENCOMENDA.H
+#include <stdio.h>
+#include "Encomenda.h"
 
-#define MAX_ENCOMENDAS 50
+int main() {
+    Encomenda encomendas[MAX_ENCOMENDAS];
+    int quantidade = 0;
+    int opcao;
 
-typedef struct {
-	int codigo;
-	char nome[50];
-	float peso;
-	int prazo;
-		
-} Encomenda;
+    do {
+        printf("\n1. Cadastrar Encomenda\n2. Listar Encomendas\n0. Sair\nEscolha: ");
+        scanf("%d", &opcao);
 
-void cadastrarEncomenda(Encomenda encomendas[], int *quantidade);
+        switch(opcao) {
+            case 1:
+                cadastrarEncomenda(encomendas, &quantidade);
+                break;
+            case 2:
+                listarEncomendas(encomendas, quantidade);
+                break;
+            case 0:
+                printf(" saindo \n");
+                break;
+            default:
+                printf(" opcao invalida \n");
+        }
+    } while(opcao != 0);
 
-void listarEncomendas(Encomenda encomendas[], int *quantidade);
-
-#endif
+    return 0;
+}

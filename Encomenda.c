@@ -1,49 +1,44 @@
-printf(" Nome da Encomenda: ");
-scanf("%49[^/n]"), Encomendas[*quantidade].nome);
+#include <stdio.h>
+#include "Encomenda.h"
 
-return;
+void cadastrarEncomenda(Encomenda encomendas[], int *quantidade) {
+    printf("\n===== CADASTRAR ENCOMENDA =====\n");
 
-{    printf("\n====   CADASTRAR ECOMENDA ====\n")
+    printf("digite o codigo: ");
+    scanf("%d", &encomendas[*quantidade].codigo);
 
-printf(" Digite o codigo");
-scanf(%d, &encomendas[*quantidade].codigo);
+    printf("digite o nome da encomenda: ");
+    scanf(" %49[^\n]", encomendas[*quantidade].nome);
+	getchar();
 
-printf(" Digite o nome da encomenda");
-scanf("%49[^\n]", encomendas[*quantidade].nome);
+    printf("digite o peso: ");
+    scanf("%f", &encomendas[*quantidade].peso);
 
-printf(" Digite o peso");
-scanf(%f, &encomendas[*quantidade].peso);
+    printf("digite o prazo em dias: "); 
+    scanf("%d", &encomendas[*quantidade].prazo);
 
-printf(" Digite o prazo em dias ");
-scanf(%d, &encomendas[*quantidade].prazo);
+    (*quantidade)++;
 
-(*quantidade)++;
-
-printf("\n Encomenda cadastrada com sucesso \n ");
-
-(*quantidade)++;
-
+    printf("\n encomenda cadastrada com sucesso\n");
 }
 
-void listarEncomendas(Encomenda encomendas[], int quantidade); {
+void listarEncomendas(Encomenda encomendas[], int quantidade) {
+    if (quantidade == 0) {
+        printf("\n nenhuma encomenda cadastrada.\n");
+        return;
+    }
+
+    printf("\n===== LISTA DE ENCOMENDAS =====\n");
+
+    for (int i = 0; i < quantidade; i++) {
+
+        printf("\ncodigo: %d", encomendas[i].codigo);
 
 
-if (quantidade == 0) {
-	printf("\n Nenhuma encomenda cadastrada \n");
-	return;
-	
-}
+        printf("\nnome da encomenda: %s", encomendas[i].nome);
 
-printf(\n ===== LISTA DE ENCOMENDAS =====\n);
+        printf("\npeso da encomenda: %.2f kg", encomendas[i].peso);
 
-for (int i = o; i < quantidade; i++) {
-	
-	printf("\n codigo: %d", encomendas[i].codigo);
-	
-	printf("\n nome da encomenda: %s", encomendas[i].nome);
-	
-	printf("\n peso: %2.f kg", encomendas[i].peso);
-	
-	printf("\n prazo: %d", encomendas[i].codgo);
-	
+        printf("\nprazo de entrega: %d dias\n", encomendas[i].prazo);
+    }
 }

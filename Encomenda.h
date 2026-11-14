@@ -13,6 +13,6 @@ typedef struct {
 
 void cadastrarEncomenda(Encomenda encomendas[], int *quantidade);
 
-void listarEncomendas(Encomenda encomendas[], int *quantidade);
+void listarEncomendas(Encomenda encomendas[], int quantidade);
 
 #endif
