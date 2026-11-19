@@ -6,6 +6,7 @@
 typedef struct {
 	int codigo;
 	char nome[50];
+	char endereco[100];
 	float peso;
 	int prazo;
 		
@@ -14,5 +15,16 @@ typedef struct {
 void cadastrarEncomenda(Encomenda encomendas[], int *quantidade);
 
 void listarEncomendas(Encomenda encomendas[], int quantidade);
+
+int buscarEncomenda(Encomenda encomendas[], int quantidade, int codigo);
+
+void atualizarEncomenda(Encomenda encomendas[], int quantidade, int codigo);
+
+void deletarEncomenda(Encomenda encomendas[], int *quantidade);
+
+void organizarEncomendas(Encomenda encomendas[], int quantidade);
+
+
+void carregarDadosMocados(Encomenda encomendas[], int *quantidade);
 
 #endif
