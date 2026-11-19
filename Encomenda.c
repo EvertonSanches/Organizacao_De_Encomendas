@@ -25,6 +25,7 @@ void cadastrarEncomenda(Encomenda encomendas[], int *quantidade) {
     printf("\n encomenda cadastrada com sucesso\n");
 }
 
+
 void listarEncomendas(Encomenda encomendas[], int quantidade) {
     if (quantidade == 0) {
         printf("\n nenhuma encomenda cadastrada.\n");
@@ -40,10 +41,12 @@ void listarEncomendas(Encomenda encomendas[], int quantidade) {
         printf("\nendereco de entrega: %s", encomendas[i].endereco);
         printf("\npeso da encomenda: %.2f kg", encomendas[i].peso);
         printf("\nprazo de entrega: %d dias\n", encomendas[i].prazo);
+        printf("\n-----------------------------\n");
     }
 }
 
-void buscarEncomenda(Encomenda encomendas[], int quantidade, int codigo) {
+
+int buscarEncomenda(Encomenda encomendas[], int quantidade, int codigo) {
     for (int i = 0; i < quantidade; i++) {
         if (encomendas[i].codigo == codigo) {
             printf("\n===== ENCOMENDA ENCONTRADA =====\n");
@@ -52,8 +55,69 @@ void buscarEncomenda(Encomenda encomendas[], int quantidade, int codigo) {
             printf("endereco de entrega: %s\n", encomendas[i].endereco);
             printf("peso da encomenda: %.2f kg\n", encomendas[i].peso);
             printf("prazo de entrega: %d dias\n", encomendas[i].prazo);
-            return;
+            return i;
         }
     }
     printf("\n nenhuma encomenda encontrada com o codigo %d.\n", codigo);
+  
+;
+    return -1;
 }
+
+
+void atualizarEncomenda(Encomenda encomendas[], int quantidade, int codigo) {
+    int posicao = buscarEncomenda(encomendas, quantidade, codigo);
+    if (posicao == -1) {
+        printf("\n nenhuma encomenda encontrada com o codigo %d.\n", codigo);
+        return;
+    }
+
+    printf("\n===== ATUALIZAR ENCOMENDA =====\n");
+    printf("digite o novo nome da encomenda: ");
+    scanf(" %49[^\n]", encomendas[posicao].nome);
+    getchar();
+
+    printf("digite o novo endereco de entrega: ");
+    scanf(" %99[^\n]", encomendas[posicao].endereco);
+
+    printf("digite o novo peso: ");
+    scanf("%f", &encomendas[posicao].peso);
+
+    printf("digite o novo prazo em dias: "); 
+    scanf("%d", &encomendas[posicao].prazo);
+
+    printf("\n encomenda atualizada com sucesso\n");
+}
+
+
+
+void deletarEncomenda(Encomenda encomendas[], int *quantidade) {
+    int codigoBusca;
+    
+    if (*quantidade == 0) {
+        printf("\n nenhuma encomenda cadastrada para excluir.\n");
+        return;
+    }
+    
+    printf("\n===== EXCLUIR ENCOMENDA =====\n");
+    printf("digite o codigo da encomenda que deseja excluir: ");
+    
+    if (scanf("%d", &codigoBusca) != 1) {
+        int c;
+        while ((c = getchar()) != '\n' && c != EOF);
+        printf("\n codigo invalido.\n");
+        return;
+    }
+    
+    int posicao = buscarEncomenda(encomendas, *quantidade, codigoBusca);
+    
+
+    for (int j = posicao; j < *quantidade - 1; j++) {
+        encomendas[j] = encomendas[j + 1];
+    }
+
+    (*quantidade)--;
+
+    printf("\n encomenda com codigo %d excluida com sucesso\n", codigoBusca);
+}
+
