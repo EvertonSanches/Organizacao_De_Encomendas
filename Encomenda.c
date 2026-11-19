@@ -1,4 +1,5 @@
 #include <stdio.h>
+#include <stdlib.h>
 #include "Encomenda.h"
 
 void cadastrarEncomenda(Encomenda encomendas[], int *quantidade) {
@@ -120,4 +121,3 @@ void deletarEncomenda(Encomenda encomendas[], int *quantidade) {
 
     printf("\n encomenda com codigo %d excluida com sucesso\n", codigoBusca);
 }
-

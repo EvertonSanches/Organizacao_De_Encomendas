@@ -43,9 +43,11 @@ int main() {
                 break;
             }   
             
-            case 5:
+            case 5:{
                 deletarEncomenda(encomendas, &quantidade);
                 break;
+            }
+
             case 0:
                 printf(" saindo \n");
                 break;

@@ -21,4 +21,5 @@ int buscarEncomenda(Encomenda encomendas[], int quantidade, int codigo);
 void atualizarEncomenda(Encomenda encomendas[], int quantidade, int codigo);
 
 void deletarEncomenda(Encomenda encomendas[], int *quantidade);
+
 #endif
